@@ -1,4 +1,7 @@
 const path = require("path");
+const webpack = require("webpack");
+const Dotenv = require("dotenv-webpack");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
@@ -14,7 +17,7 @@ module.exports = {
   devtool: "source-map",
   devServer: {
     static: "./dist",
-    historyApiFallback: true, 
+    historyApiFallback: true,
     hot: true,
     port: 3000,
   },
@@ -28,14 +31,13 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader", "postcss-loader"],
-      }
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
-    
-    
+    new Dotenv(),
   ],
 };
