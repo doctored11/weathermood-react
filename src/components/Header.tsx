@@ -4,11 +4,13 @@ import React from "react";
 export function Header() {
   return (
     <nav
-      className="w-full min-h-14 bg-slate-600 flex items-center px-10"
+      className="w-full min-h-14 bg-slate-600 flex items-center justify-between px-10 md:min-h-16"
       role="navigation"
       aria-label="Main navigation"
     >
-      <ul className="flex text-red-600 lg:text-gray-500 text-5xl sm:text-2xl md:text-xl lg:text-base">
+
+      <Link to="/" className="text-yellow-300 text-xl lg:text-4xl md:text-2xl hover:text-white"><span className="text-white">W</span>Mood</Link>
+      <ul className="flex  text-gray-200 text-lg lg:text-3xl md:text-xl space-x-3 md:space-x-4">
         {[
           { to: "/", label: "pages" },
           { to: "/control", label: "control" },
