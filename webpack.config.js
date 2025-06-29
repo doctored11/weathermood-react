@@ -1,7 +1,5 @@
 const path = require("path");
-const webpack = require("webpack");
 const Dotenv = require("dotenv-webpack");
-
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
@@ -13,6 +11,7 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    
   },
   devtool: "source-map",
   devServer: {

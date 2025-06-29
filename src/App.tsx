@@ -9,8 +9,9 @@ import { History } from "./pages/history";
 export default function App() {
   return (
     <BrowserRouter>
+    
       <Header />
-      <main>
+      <main className="pt-16">
         <Routes>
           <Route path="/" element={<ControlPage />} />
           <Route path="/control" element={<ControlPage />} />

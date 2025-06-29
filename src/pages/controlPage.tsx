@@ -1,26 +1,27 @@
 import React from "react";
 import { useGeoLocation } from "../hooks/useGeoLocation";
-import { YandexMap } from "../components/YandexMap";
-
-import { Control } from "../components/Control";
-import { SmilesControl } from "../components/SmilesControl";
+import { useWeather } from "../hooks/useWeather";
 import { EmotionBlock } from "../components/EmotionBlock";
 import { PositionBlock } from "../components/PositionBlock";
+
 export function ControlPage() {
   const { location, isLoading } = useGeoLocation();
 
-  if (isLoading) return <div>Получаем ваше местоположение...</div>;
+  const weather = useWeather(
+    location?.coords.latitude ?? 0,
+    location?.coords.longitude ?? 0
+  );
 
-  if (!location) return null;
+  if (isLoading) return <div>Получаем ваше местоположение...</div>;
+  if (!location) return <div>Не удалось определить координаты</div>;
 
   return (
     <div className="flex flex-col-reverse sm:flex-row justify-around gap-4 py-8">
-     
-      <div className=" w-full sm:w-1/3">
-        <PositionBlock location={location} />
+      <div className="w-full sm:w-1/3">
+        <PositionBlock location={location} weather={weather} />
       </div>
       <div className="w-full sm:w-1/3">
-        <EmotionBlock />
+        <EmotionBlock weather={weather} />
       </div>
     </div>
   );
